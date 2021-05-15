@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_line_between_item"
+        android:layout_width="match_parent"
+        android:src="@drawable/menu_line_1"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="23dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_text_menu_style_3"
+        android:layout_width="wrap_content"
+        android:background="@drawable/menu_background_text"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_marginLeft="54dp"
+        android:paddingRight="10dp"
+        android:fontFamily="@font/raleway_medium"
+        android:text="@string/text_text"
+        android:textColor="#151515"
+        android:textSize="16sp"
+        android:layout_marginStart="54dp" />
+</LinearLayout>

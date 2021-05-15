@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:layout_marginTop="16dp"
+    app:cardCornerRadius="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_news_image_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/image_iphone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_news_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/raleway_regular"
+            android:text="@string/alt_3_87"
+            android:textColor="#f00909"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toRightOf="@id/iv_news_image_list"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tv_news_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_black"
+            android:text="@string/at"
+            android:textColor="#2e2e2e"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="@id/tv_news_discount"
+            app:layout_constraintTop_toBottomOf="@id/tv_news_discount" />
+
+        <TextView
+            android:id="@+id/tv_text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_light"
+            android:text="@string/illum_velit_nam_voluptatum_enim_aut"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toLeftOf="@id/tv_news_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_news_name"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tv_text_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_light"
+            android:text="@string/ratione_ratione_officiis_totam"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toLeftOf="@id/tv_text_1"
+            app:layout_constraintTop_toBottomOf="@id/tv_text_1"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tv_text_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_light"
+            android:text="@string/mollitia_eum_sint_tempora_ducimus"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toLeftOf="@id/tv_text_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_text_2"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/tv_news_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_3_sept_2020"
+            android:textColor="#080808"
+            android:fontFamily="@font/lato_light"
+            android:textSize="10sp"
+            app:layout_constraintTop_toTopOf="@id/tv_news_discount"
+            app:layout_constraintBottom_toBottomOf="@id/tv_news_discount"
+            app:layout_constraintLeft_toRightOf="@id/tv_news_discount"
+            android:layout_marginLeft="32dp"
+            tools:ignore="SmallSp"
+            android:layout_marginStart="32dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_gruppo_di_maschere_1_clipped"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginEnd="7dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

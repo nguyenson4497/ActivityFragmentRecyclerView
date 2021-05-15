@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/iv_icon_list_menu_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:padding="10dp"
+        android:src="@drawable/icons_8_alarm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_icon_list_menu_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:fontFamily="@font/raleway_medium"
+        android:text="@string/select_stocks"
+        android:textColor="#454545"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_icon_list_menu_2"
+        app:layout_constraintLeft_toRightOf="@id/iv_icon_list_menu_2"
+        app:layout_constraintTop_toTopOf="@id/iv_icon_list_menu_2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
