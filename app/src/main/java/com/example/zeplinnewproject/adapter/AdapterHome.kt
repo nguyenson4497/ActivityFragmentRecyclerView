@@ -1,5 +1,6 @@
 package com.example.zeplinnewproject.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,8 +33,9 @@ class AdapterHome : RecyclerView.Adapter<AdapterHome.HomeViewHolder>() {
 
     override fun getItemCount() = listData.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolder: HomeViewHolder, position: Int) {
-        viewHolder.textView1.text = listData[position].name
+        viewHolder.textView1.text = listData[position].name + " $position"
         viewHolder.textView2.text = listData[position].index
         viewHolder.textView3.text = listData[position].time
         viewHolder.textView4.text = listData[position].value

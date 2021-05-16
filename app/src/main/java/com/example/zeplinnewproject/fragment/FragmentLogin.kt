@@ -1,11 +1,13 @@
 package com.example.zeplinnewproject.fragment
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -13,7 +15,9 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.zeplinnewproject.R
 import com.example.zeplinnewproject.`interface`.TransferData
 import com.example.zeplinnewproject.activity.HomeActivity
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_login.*
+import java.util.*
 
 class FragmentLogin : Fragment(), View.OnClickListener {
     private var displayEmail: String? = ""

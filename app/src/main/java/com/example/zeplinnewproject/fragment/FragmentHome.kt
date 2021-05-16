@@ -1,10 +1,11 @@
 package com.example.zeplinnewproject.fragment
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -13,11 +14,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zeplinnewproject.R
-import com.example.zeplinnewproject.`interface`.TransferData
 import com.example.zeplinnewproject.adapter.AdapterHome
 import com.example.zeplinnewproject.adapter.MenuAdapter
 import com.example.zeplinnewproject.model.HomeObject
-import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.*
 
 class FragmentHome : Fragment() {
     private var isLoading: Boolean = false
@@ -40,6 +41,12 @@ class FragmentHome : Fragment() {
         val recyclerMenu = view.findViewById<RecyclerView>(R.id.rv_item_menu_1)
         val recyclerItemHome = view.findViewById<RecyclerView>(R.id.rv_item_home)
         btnLoad = view.findViewById(R.id.button_load)
+        val alarm = view.findViewById<ImageView>(R.id.iv_alarm)
+        alarm.setOnClickListener{
+            val rnd = Random()
+            val color: Int = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+            iv_alarm.setBackgroundColor(color)
+        }
 
         recyclerMenu.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -133,16 +140,9 @@ class FragmentHome : Fragment() {
     }
 
     private fun add10Item() {
-        mList.add(HomeObject("DOWN JONES 1", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
-        mList.add(HomeObject("DOWN JONES 2", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
-        mList.add(HomeObject("DOWN JONES 3", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
-        mList.add(HomeObject("DOWN JONES 4", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
-        mList.add(HomeObject("DOWN JONES 5", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
-        mList.add(HomeObject("DOWN JONES 6", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
-        mList.add(HomeObject("DOWN JONES 7", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
-        mList.add(HomeObject("DOWN JONES 8", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
-        mList.add(HomeObject("DOWN JONES 9", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
-        mList.add(HomeObject("DOWN JONES 10", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
+        for(i in 1..10){
+            mList.add(HomeObject("DOWN JONES", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
+        }
         adapterHome.setData(mList)
         isLoading = false
         btnLoad.visibility = View.GONE

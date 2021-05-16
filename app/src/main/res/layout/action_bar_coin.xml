@@ -65,13 +65,21 @@
         app:layout_constraintBottom_toBottomOf="@id/tv_text_1"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <ImageView
+    <androidx.cardview.widget.CardView
         android:layout_width="37dp"
         android:layout_height="37dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/home_background_alarm"
-        android:padding="9dp"
-        android:src="@drawable/icons_8_alarm"
+        app:cardCornerRadius="180dp"
         app:layout_constraintRight_toLeftOf="@+id/iv_menu_vertical"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_alarm_2"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#101010"
+            android:padding="9dp"
+            android:src="@drawable/icons_8_alarm" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
