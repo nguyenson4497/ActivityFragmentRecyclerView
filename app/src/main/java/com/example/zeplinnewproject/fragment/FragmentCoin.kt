@@ -36,7 +36,7 @@ class FragmentCoin : Fragment() {
         alarm2.setOnClickListener {
             val rnd = Random()
             val color: Int = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
-            iv_alarm.setBackgroundColor(color)
+            iv_alarm_2.setBackgroundColor(color)
         }
 
         val recyclerCoin = view.findViewById<RecyclerView>(R.id.rv_coin_menu)
