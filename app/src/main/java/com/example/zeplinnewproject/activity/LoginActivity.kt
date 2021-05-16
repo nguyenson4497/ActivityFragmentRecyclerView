@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zeplinnewproject.R
 import com.example.zeplinnewproject.`interface`.TransferData
-import com.example.zeplinnewproject.fragment.FragmentConfirmPassword
 import com.example.zeplinnewproject.fragment.FragmentLogin
 
 class LoginActivity : AppCompatActivity(), TransferData {
@@ -29,9 +28,7 @@ class LoginActivity : AppCompatActivity(), TransferData {
 
         val transaction = supportFragmentManager.beginTransaction()
         val fragmentLogin = FragmentLogin()
-        val fragmentConfirmPassword = FragmentConfirmPassword()
         fragmentLogin.arguments = bundle
-        fragmentConfirmPassword.arguments = bundle
 
         transaction.replace(R.id.frame_account, fragmentLogin)
         transaction.commit()
@@ -39,6 +36,5 @@ class LoginActivity : AppCompatActivity(), TransferData {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        supportFragmentManager.popBackStack()
     }
 }

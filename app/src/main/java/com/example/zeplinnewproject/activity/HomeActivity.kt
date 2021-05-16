@@ -32,6 +32,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
         val fragment = FragmentHome()
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_tab, fragment)
+        fragmentTransaction.addToBackStack(FragmentHome.TAB_HOME)
         fragmentTransaction.commit()
     }
 
@@ -42,7 +43,6 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                 val fragmentTransaction: FragmentTransaction =
                     supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.fragment_tab, fragment)
-                fragmentTransaction.addToBackStack(FragmentHome.TAB_HOME)
                 fragmentTransaction.commit()
             }
             iv_chart -> {
@@ -76,7 +76,9 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        supportFragmentManager.popBackStack()
+        if (iv_chart.isFocusable){
+            supportFragmentManager.popBackStack(FragmentHome.TAB_HOME, 1)
+        }
     }
 
 }

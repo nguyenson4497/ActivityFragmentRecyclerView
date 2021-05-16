@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -12,9 +13,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zeplinnewproject.R
+import com.example.zeplinnewproject.`interface`.TransferData
 import com.example.zeplinnewproject.adapter.AdapterHome
 import com.example.zeplinnewproject.adapter.MenuAdapter
 import com.example.zeplinnewproject.model.HomeObject
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class FragmentHome : Fragment() {
     private var isLoading: Boolean = false
@@ -99,7 +102,6 @@ class FragmentHome : Fragment() {
                 }
             })
         itemTouchHelper.attachToRecyclerView(recyclerItemHome)
-        fragmentManager?.isStateSaved
         return view
     }
 
@@ -144,6 +146,6 @@ class FragmentHome : Fragment() {
         adapterHome.setData(mList)
         isLoading = false
         btnLoad.visibility = View.GONE
-        fragmentManager?.isStateSaved
     }
+
 }

@@ -6,13 +6,13 @@
     android:layout_marginBottom="10dp"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <View
         android:id="@+id/iv_line_between_item"
         android:layout_width="match_parent"
-        android:src="@drawable/menu_line_1"
+        android:background="#434343"
         android:layout_marginBottom="25dp"
         android:layout_marginTop="23dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0.5dp"/>
 
     <TextView
         android:id="@+id/tv_text_menu_style_3"

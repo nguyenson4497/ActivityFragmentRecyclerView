@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.zeplinnewproject.R
+import com.example.zeplinnewproject.`interface`.TransferData
 import com.example.zeplinnewproject.activity.HomeActivity
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -19,6 +20,7 @@ class FragmentLogin : Fragment(), View.OnClickListener {
     private var displayPassword: String? = ""
     private lateinit var edtEmail: EditText
     private lateinit var edtPassword: EditText
+    private lateinit var transferData: TransferData
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +36,7 @@ class FragmentLogin : Fragment(), View.OnClickListener {
         btnSignUp.setOnClickListener(this)
         btnLogin.setOnClickListener(this)
         btnForgotPassword.setOnClickListener(this)
+        transferData = activity as TransferData
 
         displayEmail = arguments?.getString("mess1")
         displayPassword = arguments?.getString("mess2")
