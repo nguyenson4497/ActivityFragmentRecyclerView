@@ -71,6 +71,7 @@
             android:id="@+id/button_load"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:background="@drawable/home_background_button_load_more"
             android:fontFamily="@font/raleway_medium"
             android:gravity="center"
@@ -79,12 +80,24 @@
             android:paddingRight="16dp"
             android:paddingBottom="8dp"
             android:text="@string/load_more"
-            android:visibility="gone"
-            android:layout_marginTop="16dp"
             android:textColor="#ffffff"
+            android:textSize="15sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:textSize="15sp" />
+            app:layout_constraintRight_toRightOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/iv_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
+        android:layout_marginBottom="29dp"
+        android:background="@drawable/home_background_alarm"
+        android:padding="13dp"
+        android:src="@drawable/icons_8_alarm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
