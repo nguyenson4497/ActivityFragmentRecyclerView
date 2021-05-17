@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -15,28 +13,21 @@ import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class FragmentSignUp : Fragment(), View.OnClickListener {
     private lateinit var transferData: TransferData
-    private lateinit var edtE: EditText
-    private lateinit var edtP: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.fragment_sign_up, container, false)
+        return inflater.inflate(R.layout.fragment_sign_up, container, false)
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         transferData = activity as TransferData
-        edtE = view.findViewById(R.id.edt_email)
-        edtP = view.findViewById(R.id.edt_password)
-
-        val btnSignUp = view.findViewById<TextView>(R.id.tv_button_sign_up)
-        val btnLogin = view.findViewById<TextView>(R.id.tv_login)
-        val btnForgotPassword = view.findViewById<TextView>(R.id.tv_forgot_password_2)
-
-        btnSignUp.setOnClickListener(this)
-        btnLogin.setOnClickListener(this)
-        btnForgotPassword.setOnClickListener(this)
-        return view
+        tv_button_sign_up.setOnClickListener(this)
+        tv_login.setOnClickListener(this)
+        tv_forgot_password_2.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -49,6 +40,8 @@ class FragmentSignUp : Fragment(), View.OnClickListener {
                 val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
                 val fragment = FragmentLogin()
                 fragmentTransaction?.replace(R.id.frame_account, fragment)
+                fragmentTransaction?.addToBackStack(null)
+                fragmentTransaction?.commit()
                 sendDataToFragmentLogin()
             }
             tv_login -> {
@@ -69,7 +62,7 @@ class FragmentSignUp : Fragment(), View.OnClickListener {
     }
 
     private fun sendDataToFragmentLogin() {
-        transferData.passData(edtE.text.toString(), edtP.text.toString())
+        transferData.passData(edt_email.text.toString(), edt_password.text.toString())
     }
 
     companion object {

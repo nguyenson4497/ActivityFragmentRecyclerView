@@ -1,17 +1,15 @@
 package com.example.zeplinnewproject.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.zeplinnewproject.R
 import com.example.zeplinnewproject.adapter.AdapterArticle
 import com.example.zeplinnewproject.adapter.AdapterNewsTop
+import kotlinx.android.synthetic.main.fragment_news_2.*
 
 class FragmentNewsArticle : Fragment(), View.OnClickListener {
     private var list: Array<String> = arrayOf(
@@ -51,23 +49,22 @@ class FragmentNewsArticle : Fragment(), View.OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_news_2, container, false)
-        val back = view.findViewById<ImageView>(R.id.iv_news_back)
-        back.setOnClickListener(this)
+        return inflater.inflate(R.layout.fragment_news_2, container, false)
+    }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         dataArticle()
-        val recyclerArticle = view.findViewById<RecyclerView>(R.id.rv_news_article)
-        recyclerArticle.layoutManager =
+        rv_news_article.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        recyclerArticle.adapter = adapterArticle
+        rv_news_article.adapter = adapterArticle
 
         dataTop()
-        val recyclerTop = view.findViewById<RecyclerView>(R.id.rv_item_news_3)
-        recyclerTop.layoutManager =
+        rv_item_news_3.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerTop.adapter = adapterNewsTop
+        rv_item_news_3.adapter = adapterNewsTop
 
-        return view
+        iv_img_news_2.setOnClickListener(this)
     }
 
     private fun dataTop() {

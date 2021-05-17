@@ -5,28 +5,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.zeplinnewproject.R
 import com.example.zeplinnewproject.activity.LoginActivity
+import com.example.zeplinnewproject.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_on_boarding_2.*
 
 class FragmentOnBoarding2 : Fragment(), View.OnClickListener {
+    private lateinit var mMainActivity: MainActivity
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_on_boarding_2, container, false)
-        val btnNext = view.findViewById<TextView>(R.id.tv_button_next_2)
-        val btnSkip = view.findViewById<TextView>(R.id.tv_skip_2)
-        val btnBack = view.findViewById<ImageView>(R.id.iv_back_2)
-        btnNext.setOnClickListener(this)
-        btnSkip.setOnClickListener(this)
-        btnBack.setOnClickListener(this)
-        return view
+        return inflater.inflate(R.layout.fragment_on_boarding_2, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        mMainActivity = activity as MainActivity
+        tv_skip_2.setOnClickListener(this)
+        tv_button_next_2.setOnClickListener(this)
+        iv_back_2.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -40,6 +42,7 @@ class FragmentOnBoarding2 : Fragment(), View.OnClickListener {
             }
             tv_skip_2 -> {
                 startActivity(Intent(context, LoginActivity::class.java))
+                mMainActivity.finish()
             }
             iv_back_2 -> {
                 fragmentManager?.popBackStack()

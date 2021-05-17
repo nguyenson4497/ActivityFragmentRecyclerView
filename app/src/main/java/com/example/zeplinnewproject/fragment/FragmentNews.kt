@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.zeplinnewproject.R
 import com.example.zeplinnewproject.adapter.AdapterNewsTop
 import com.example.zeplinnewproject.adapter.AdapterNews
 import com.example.zeplinnewproject.model.NewsObject
+import kotlinx.android.synthetic.main.fragment_news_1.*
 
 class FragmentNews : Fragment() {
     private lateinit var mList: MutableList<NewsObject>
@@ -28,34 +27,30 @@ class FragmentNews : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_news_1, container, false)
+        return inflater.inflate(R.layout.fragment_news_1, container, false)
+    }
 
-        val recyclerItem = view.findViewById<RecyclerView>(R.id.rv_item_news_2)
-        recyclerItem.layoutManager =
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        data()
+        dataAlready()
+
+        rv_item_news_2.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        recyclerItem.adapter = adapterNews
+        rv_item_news_2.adapter = adapterNews
 
-        val recyclerTop = view.findViewById<RecyclerView>(R.id.rv_item_news_1)
-        recyclerTop.layoutManager =
+        rv_item_news_1.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerTop.adapter = adapterNewsTop
-
-        val image = view.findViewById<ImageView>(R.id.iv_img_news)
-        image.setOnClickListener {
+        rv_item_news_1.adapter = adapterNewsTop
+        iv_img_news.setOnClickListener {
             val fragment = FragmentNewsArticle()
             val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.fragment_tab, fragment)?.addToBackStack(TAB_NEWS)
                 ?.commit()
         }
-
-        val back = view.findViewById<ImageView>(R.id.iv_news_back)
-        back.setOnClickListener{
+        iv_news_back.setOnClickListener{
             fragmentManager?.popBackStack()
         }
-
-        data()
-        dataAlready()
-        return view
     }
 
     private fun data() {

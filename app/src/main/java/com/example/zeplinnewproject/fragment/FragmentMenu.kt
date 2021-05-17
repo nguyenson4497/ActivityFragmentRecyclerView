@@ -13,6 +13,7 @@ import com.example.zeplinnewproject.R
 import com.example.zeplinnewproject.adapter.AdapterMenu
 import com.example.zeplinnewproject.model.MenuObject1
 import com.example.zeplinnewproject.model.MenuObject2
+import kotlinx.android.synthetic.main.fragment_menu.*
 
 class FragmentMenu : Fragment() {
     private var listData: MutableList<Any> = mutableListOf()
@@ -22,19 +23,20 @@ class FragmentMenu : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_menu, container, false)
+        return inflater.inflate(R.layout.fragment_menu, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         dataAlready()
         menuAdapterMenu.setData(listData)
-        val recycler1 = view.findViewById<RecyclerView>(R.id.rv_list_menu)
-        recycler1.layoutManager =
+        rv_list_menu.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        recycler1.adapter = menuAdapterMenu
-        val back = view.findViewById<ImageView>(R.id.iv_menu_back)
-        back.setOnClickListener {
+        rv_list_menu.adapter = menuAdapterMenu
+        iv_menu_back.setOnClickListener {
             fragmentManager?.popBackStack()
         }
 
-        return view
     }
 
     private fun dataAlready() {

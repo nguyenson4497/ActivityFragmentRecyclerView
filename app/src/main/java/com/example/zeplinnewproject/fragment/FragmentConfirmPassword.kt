@@ -9,20 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.zeplinnewproject.R
 import com.example.zeplinnewproject.`interface`.TransferData
+import kotlinx.android.synthetic.main.fragment_confirm_password_changed.*
 
 class FragmentConfirmPassword: Fragment(), View.OnClickListener {
     private lateinit var transferData: TransferData
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_confirm_password_changed, container, false)
-        val btnLogin = view.findViewById<TextView>(R.id.tv_button_login_confirm)
-        btnLogin.setOnClickListener(this)
+        return inflater.inflate(R.layout.fragment_confirm_password_changed, container, false)
+    }
 
-        return view
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        tv_button_login_confirm.setOnClickListener(this)
+        transferData = activity as TransferData
     }
 
     override fun onClick(p0: View?) {

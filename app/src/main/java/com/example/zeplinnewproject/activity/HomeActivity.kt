@@ -1,14 +1,13 @@
 package com.example.zeplinnewproject.activity
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.example.zeplinnewproject.R
-import com.example.zeplinnewproject.fragment.FragmentCoin
-import com.example.zeplinnewproject.fragment.FragmentHome
-import com.example.zeplinnewproject.fragment.FragmentMenu
-import com.example.zeplinnewproject.fragment.FragmentNews
+import com.example.zeplinnewproject.fragment.*
 import kotlinx.android.synthetic.main.bottom_bar.*
 
 class HomeActivity : AppCompatActivity(), View.OnClickListener {
@@ -16,7 +15,6 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
         goToMainApp()
         initViews()
     }
@@ -50,7 +48,6 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                 val fragmentTransaction: FragmentTransaction =
                     supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.fragment_tab, fragment)
-                fragmentTransaction.addToBackStack(FragmentHome.TAB_HOME)
                 fragmentTransaction.addToBackStack(FragmentCoin.TAB_COIN)
                 fragmentTransaction.commit()
             }
@@ -59,7 +56,6 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                 val fragmentTransaction: FragmentTransaction =
                     supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.fragment_tab, fragment)
-                fragmentTransaction.addToBackStack(FragmentHome.TAB_HOME)
                 fragmentTransaction.addToBackStack(FragmentNews.TAB_NEWS)
                 fragmentTransaction.commit()
             }
@@ -68,7 +64,6 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                 val fragmentTransaction: FragmentTransaction =
                     supportFragmentManager.beginTransaction()
                 fragmentTransaction.replace(R.id.fragment_tab, fragment)
-                fragmentTransaction.addToBackStack(FragmentHome.TAB_HOME)
                 fragmentTransaction.commit()
             }
         }
@@ -76,9 +71,34 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        if (iv_chart.isFocusable){
-            supportFragmentManager.popBackStack(FragmentHome.TAB_HOME, 1)
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            when (supportFragmentManager.getBackStackEntryAt(supportFragmentManager.backStackEntryCount - 1).name) {
+                FragmentNews.TAB_NEWS -> {
+                    supportFragmentManager.popBackStack()
+                }
+                FragmentCoin.TAB_COIN ->{
+                    supportFragmentManager.popBackStack()
+                }
+                FragmentHome.TAB_HOME -> {
+                    supportFragmentManager.popBackStack()
+                }
+
+            }
+        } else{
+            exitApp()
         }
+
     }
 
+    private fun exitApp(){
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.setTitle("Exit Application")
+        alertDialog.setIcon(R.drawable.alert)
+        alertDialog.setMessage("Bạn có muốn thoát ứng dụng?")
+            .setCancelable(false)
+            .setPositiveButton("Có") { _, _ -> finish() }
+            .setNegativeButton("Không") { dialog, _ -> dialog.cancel() }
+        val builder = alertDialog.create()
+        builder.show()
+    }
 }

@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zeplinnewproject.R
 
-class MenuAdapter(private val listData: Array<String>) :
-    RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
+class AdapterHomeTop(private val listData: Array<String>) :
+    RecyclerView.Adapter<AdapterHomeTop.MenuViewHolder>() {
 
     class MenuViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.tv_item_menu)

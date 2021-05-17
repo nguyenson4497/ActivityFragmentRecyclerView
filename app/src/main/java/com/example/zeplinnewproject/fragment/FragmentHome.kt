@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -15,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zeplinnewproject.R
 import com.example.zeplinnewproject.adapter.AdapterHome
-import com.example.zeplinnewproject.adapter.MenuAdapter
+import com.example.zeplinnewproject.adapter.AdapterHomeTop
 import com.example.zeplinnewproject.model.HomeObject
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
@@ -28,38 +26,37 @@ class FragmentHome : Fragment() {
         "INDEX", "SHARES", "CURRENCIES", "FUTURE", "CRYPTO",
         "INDEX", "SHARES", "CURRENCIES", "FUTURE", "CRYPTO"
     )
-    private val menuAdapter: MenuAdapter = MenuAdapter(array)
+    private val menuAdapterHomeTop: AdapterHomeTop = AdapterHomeTop(array)
     private val adapterHome: AdapterHome = AdapterHome()
-    private lateinit var btnLoad: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
-        val recyclerMenu = view.findViewById<RecyclerView>(R.id.rv_item_menu_1)
-        val recyclerItemHome = view.findViewById<RecyclerView>(R.id.rv_item_home)
-        btnLoad = view.findViewById(R.id.button_load)
-        val alarm = view.findViewById<ImageView>(R.id.iv_alarm)
-        alarm.setOnClickListener{
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        iv_alarm.setOnClickListener {
             val rnd = Random()
             val color: Int = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
             iv_alarm.setBackgroundColor(color)
         }
 
-        recyclerMenu.layoutManager =
+        rv_item_menu_1.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        recyclerMenu.adapter = menuAdapter
+        rv_item_menu_1.adapter = menuAdapterHomeTop
 
         firstData()
         val linearLayoutItem = LinearLayoutManager(context)
-        recyclerItemHome.layoutManager = linearLayoutItem
-        recyclerItemHome.addItemDecoration(
+        rv_item_home.layoutManager = linearLayoutItem
+        rv_item_home.addItemDecoration(
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         )
 
-        recyclerItemHome.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        rv_item_home.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (dy > 0) {
@@ -69,22 +66,22 @@ class FragmentHome : Fragment() {
 
                     if (firstVisibleItemPosition >= 0 && (visibleItemCount + firstVisibleItemPosition) >= totalItemCount) {
                         isLoading = true
-                        btnLoad.visibility = View.VISIBLE
-                        btnLoad.setOnClickListener {
+                        button_load.visibility = View.VISIBLE
+                        button_load.setOnClickListener {
                             currentPage++
                             Toast.makeText(context, "Update 10 item!", Toast.LENGTH_SHORT).show()
                             add10Item()
                         }
                     }
                 } else {
-                    btnLoad.visibility = View.GONE
+                    button_load.visibility = View.GONE
                 }
                 if (isLoading) {
                     return
                 }
             }
         })
-        recyclerItemHome.adapter = adapterHome
+        rv_item_home.adapter = adapterHome
 
         val itemTouchHelper =
             ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
@@ -108,8 +105,7 @@ class FragmentHome : Fragment() {
                     }
                 }
             })
-        itemTouchHelper.attachToRecyclerView(recyclerItemHome)
-        return view
+        itemTouchHelper.attachToRecyclerView(rv_item_home)
     }
 
     private fun firstData() {
@@ -140,12 +136,12 @@ class FragmentHome : Fragment() {
     }
 
     private fun add10Item() {
-        for(i in 1..10){
+        for (i in 1..10) {
             mList.add(HomeObject("DOWN JONES", "NYSE", "10:44:45", "20.047.50", "+203(+1.04%)"))
         }
         adapterHome.setData(mList)
         isLoading = false
-        btnLoad.visibility = View.GONE
+        button_load.visibility = View.GONE
     }
 
 }
