@@ -4,18 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.zeplinnewproject.R
 import com.example.zeplinnewproject.adapter.AdapterMenu
 import com.example.zeplinnewproject.model.MenuObject1
 import com.example.zeplinnewproject.model.MenuObject2
 import kotlinx.android.synthetic.main.fragment_menu.*
 
-class FragmentMenu : Fragment() {
+class FragmentMenu : Fragment(), View.OnClickListener{
     private var listData: MutableList<Any> = mutableListOf()
     private val menuAdapterMenu: AdapterMenu = AdapterMenu()
     override fun onCreateView(
@@ -33,10 +30,7 @@ class FragmentMenu : Fragment() {
         rv_list_menu.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rv_list_menu.adapter = menuAdapterMenu
-        iv_menu_back.setOnClickListener {
-            fragmentManager?.popBackStack()
-        }
-
+        iv_menu_back.setOnClickListener(this)
     }
 
     private fun dataAlready() {
@@ -58,5 +52,13 @@ class FragmentMenu : Fragment() {
         listData.add(MenuObject2(R.drawable.icons_8_swap, "Currency Exchange"))
         listData.add(MenuObject2(R.drawable.icons_8_video_call, "Webinar"))
         listData.add(MenuObject2(R.drawable.icons_8_rent, "Best Broker"))
+    }
+
+    override fun onClick(p0: View?) {
+        fragmentManager?.popBackStack()
+    }
+
+    companion object{
+        const val MENU: String = "MENU"
     }
 }

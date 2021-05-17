@@ -11,7 +11,7 @@ import com.example.zeplinnewproject.fragment.*
 import kotlinx.android.synthetic.main.bottom_bar.*
 
 class HomeActivity : AppCompatActivity(), View.OnClickListener {
-
+    private val fragmentTrans : FragmentTransaction = supportFragmentManager.beginTransaction()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
