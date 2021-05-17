@@ -11,7 +11,7 @@ import com.example.zeplinnewproject.adapter.AdapterArticle
 import com.example.zeplinnewproject.adapter.AdapterNewsTop
 import kotlinx.android.synthetic.main.fragment_news_2.*
 
-class FragmentNewsArticle : Fragment(), View.OnClickListener {
+class FragmentNewsArticle : Fragment() {
     private var list: Array<String> = arrayOf(
         "EDITORIAL", "CRYPTO NEWS", "RAW MATERIAL", "ECONOMIC",
         "EDITORIAL", "CRYPTO NEWS", "RAW MATERIAL", "ECONOMIC"
@@ -54,6 +54,10 @@ class FragmentNewsArticle : Fragment(), View.OnClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        iv_news_back_222.setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
+
         dataArticle()
         rv_news_article.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -64,7 +68,6 @@ class FragmentNewsArticle : Fragment(), View.OnClickListener {
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rv_item_news_3.adapter = adapterNewsTop
 
-        iv_img_news_2.setOnClickListener(this)
     }
 
     private fun dataTop() {
@@ -75,8 +78,7 @@ class FragmentNewsArticle : Fragment(), View.OnClickListener {
         adapterArticle.setData(article)
     }
 
-    override fun onClick(p0: View?) {
-        fragmentManager?.popBackStack()
+    companion object {
+        const val TAB_ARTICLE: String = "TAB_NEW_ARTICLE"
     }
-
 }

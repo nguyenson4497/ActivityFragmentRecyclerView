@@ -46,7 +46,7 @@ class FragmentNews : Fragment() {
             val fragment = FragmentNewsArticle()
             val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.fragment_tab, fragment)?.addToBackStack(TAB_NEWS)
-                ?.commit()
+                ?.addToBackStack(FragmentNewsArticle.TAB_ARTICLE)?.commit()
         }
         iv_news_back.setOnClickListener{
             fragmentManager?.popBackStack()

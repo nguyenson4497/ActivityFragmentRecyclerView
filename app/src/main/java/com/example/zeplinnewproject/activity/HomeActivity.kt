@@ -79,10 +79,9 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener {
                 FragmentCoin.TAB_COIN ->{
                     supportFragmentManager.popBackStack()
                 }
-                FragmentHome.TAB_HOME -> {
+                FragmentNewsArticle.TAB_ARTICLE ->{
                     supportFragmentManager.popBackStack()
                 }
-
             }
         } else{
             exitApp()

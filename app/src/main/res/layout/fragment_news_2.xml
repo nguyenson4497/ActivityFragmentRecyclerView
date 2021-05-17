@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_news_back_2"
+        android:id="@+id/iv_news_back_222"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -36,8 +36,8 @@
         android:text="@string/editorial_news"
         android:textColor="#121212"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@id/iv_news_back_2"
-        app:layout_constraintLeft_toRightOf="@id/iv_news_back_2" />
+        app:layout_constraintBottom_toBottomOf="@id/iv_news_back_222"
+        app:layout_constraintLeft_toRightOf="@id/iv_news_back_222" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_item_news_3"
@@ -47,6 +47,7 @@
         android:background="@drawable/home_background_menu"
         android:paddingStart="16dp"
         android:paddingLeft="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_news"
         app:layout_constraintBottom_toBottomOf="@id/iv_photo"
         tools:ignore="RtlSymmetry" />
 
